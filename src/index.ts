@@ -6,8 +6,10 @@ import connect from "./config/db";
 import router from "./routes";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import swaggerUi from "swagger-ui-express";
+import swaggerOutput from "./config/swagger_output.json";
 import { routeNotFound } from "./middleware/notFound";
-import { SERVER_HOSTNAME, SERVER_PORT } from "./config/constants";
+import { NODE_ENV, SERVER_HOSTNAME, SERVER_PORT } from "./config/constants";
 import { corsOptions } from "./config/cors";
 
 export const app = express();
@@ -18,9 +20,10 @@ app.use(express.json({}));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan);
 app.use("/", router());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerOutput));
 app.use(routeNotFound);
 
-if (process.env.NODE_ENV !== "test") {
+if (NODE_ENV !== "test") {
     const server = http.createServer(app);
     (async function Main() {
         await connect();

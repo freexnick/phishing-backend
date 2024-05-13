@@ -9,3 +9,5 @@ services are named as:
 -   `server` - node application, by default on port `5000`
 -   `mongo_express` - mongo-express web based UI to interfere with MongoDB by default on port `8888`
 -   `mongo_db` - mongodb by default on port `27017`
+
+`/api-docs` - you can check the routes here

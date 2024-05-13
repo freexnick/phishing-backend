@@ -7,6 +7,7 @@ const { env } = process;
 
 const SERVER_HOSTNAME = env.SERVER_HOSTNAME || "localhost";
 const FRONT_HOSTNAME = env.FRONT_HOSTNAME || "localhost";
+const NODE_ENV = env.NODE_ENV || "dev";
 const LOG_LEVEL = env.LOG_LEVEL || "http";
 const MONGODB_HOST = env.MONGODB_HOST || "localhost";
 const MONGODB_USERNAME = env.MONGODB_USERNAME || "";
@@ -26,6 +27,7 @@ const MONGODB_URI = `mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB
 export {
     SERVER_HOSTNAME,
     SERVER_PORT,
+    NODE_ENV,
     LOG_LEVEL,
     MONGODB_URI,
     BCRYPT_SALT,
